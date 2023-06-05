@@ -8,6 +8,7 @@ Flask = "2.2.2"
 Flask-Migrate = "3.1.0"
 Flask-SQLAlchemy = "2.5.1"
 sqlalchemy-serializer = "1.4.1"
+
 [dev-packages]
 
 [requires]
