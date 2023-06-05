@@ -7,7 +7,7 @@ function ProductGrid() {
   const [wines, setWines] = useState([]);
 
   useEffect(() => {
-    fetch("/products")
+    fetch("/products") // localhost works here too!
       .then((r) => r.json())
       .then(setWines);
   }, []);
