@@ -90,9 +90,10 @@ with app.app_context():
     print("Starting seed...")
     print("Seeding products...")
     Product.query.delete()
+    User.query.delete()
     # make_products()
     print('Trying it out')
-    user1 = User(email= 'sarah@test.com', password='password', admin=False)
+    user1 = User(email= 'sarah@test.com', _password_hash='password', admin=False)
 
     wine1 = Product(name= 'Peekaboo Grenache Pét-Nat 2021', price= 33.95, description='Jauma Peekaboo Grenache Pét-Nat 2020 is a natural wine made from 100percent Grenache grapes farmed sustainably in McLaren Vale, Southern Australia.', units=10, units_sold=4, image_url='https://cdn.shopify.com/s/files/1/0019/3363/9735/files/jauma-peek-a-boo-natural-wine-primal-wine.progressive.jpg?v=1683023715')
     wine2 = Product(name= 'Shake Up! 2021', price= 28.95, description='A fun pétillant natural wine that is flowing with tropical, citrus, and stone fruit flavors. Spicy on the palate with balanced acidity, and a long fresh finish!', units=17, units_sold=33, image_url='https://cdn.shopify.com/s/files/1/0011/8148/3072/products/Shake-Up_-Purity-natural-sparkling-wine-California-USA-front_1512x.jpg?v=1666059456')

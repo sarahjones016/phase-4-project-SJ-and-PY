@@ -3,6 +3,7 @@ import "./Login.css";
 
 function Login({ onLogin, user }) {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -11,7 +12,7 @@ function Login({ onLogin, user }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, password }),
     })
       .then((r) => r.json())
       .then((user) => onLogin(user));
@@ -27,11 +28,14 @@ function Login({ onLogin, user }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {/* <input
-          type="text"
+        <label>Password:</label>
+        <input
+          type="password"
+          id="password"
+          autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        /> */}
+        />
         <button type="submit">Login</button>
         </form>
       )}

@@ -37,12 +37,18 @@ api.add_resource(Products, "/products")
 class Login(Resource):
 
     def post(self):
-        user = User.query.filter(
-            User.email == request.get_json()['email']
-        ).first()
 
-        session['user_id'] = user.id
-        return user.to_dict()
+        email = request.get_json()['email']
+        password = request.get_json()['password']
+
+        user = User.query.filter(User.email == email).first()
+
+        if user.authenticate(password):
+
+            session['user_id'] = user.id
+            return user.to_dict(), 200
+
+        return {'error': '401 Unauthorized'}, 401
     
 api.add_resource(Login, "/login")
 
