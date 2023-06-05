@@ -32,7 +32,7 @@ class Product(db.Model, SerializerMixin):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    price = db.Column(db.Integer)
+    price = db.Column(db.Float)
     description = db.Column(db.String)
     units = db.Column(db.Integer)
     units_sold = db.Column(db.Integer)
@@ -45,7 +45,7 @@ class Product(db.Model, SerializerMixin):
 class Order(db.Model, SerializerMixin):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
-    total_price = db.Column(db.Integer)
+    total_price = db.Column(db.Float)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     purchase = db.Column(db.Boolean)
 
