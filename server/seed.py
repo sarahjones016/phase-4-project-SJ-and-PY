@@ -65,9 +65,28 @@ def make_products():
 
     db.session.add_all(products)
     db.session.commit()
+def make_users():
+    emails = []
+    
+    for _ in range(30):
+        email = fake.free_email()
+        while email in emails:
+            email = str(fake.email())
+        emails.append(email)
+        user = User(
+            email=email,
+            password = str(fake.password(length=8)),
+            admin = False
+        )
+        emails.append(user)
+    return emails
 
 if __name__ == '__main__':
     fake = Faker()
     with app.app_context():
         print("Starting seed...")
+        print("Seeding products...")
+        make_products()
+        print("Seeding users...")
+        make_users()
         # Seed code goes here!
