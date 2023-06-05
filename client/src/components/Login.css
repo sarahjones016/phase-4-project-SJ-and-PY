@@ -1,0 +1,24 @@
+.nav-bar a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-bar {
+  list-style: none;
+}
+
+.nav-bar li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav-bar li a:hover {
+  color: #fd95c9;
+}
+.login-form {
+    display: inline-block;
+    outline: dashed 1px red;
+}
+.form{
+    
+}
