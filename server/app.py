@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
 # Standard library imports
-from flask import Flask, request, make_response, jsonify
+from flask import Flask, request, make_response, jsonify, session
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 
-from models import db, User, Product, Order, User
+from models import db, User, Product, Order
 
 app = Flask(__name__)
+app.secret_key = b'Y\xf1Xz\x00\xad|eQ\x80t \xca\x1a\x10K'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
@@ -32,6 +33,37 @@ class Products(Resource):
         return response
 
 api.add_resource(Products, "/products")
+
+class Login(Resource):
+
+    def post(self):
+        user = User.query.filter(
+            User.email == request.get_json()['email']
+        ).first()
+
+        session['user_id'] = user.id
+        return user.to_dict()
+    
+api.add_resource(Login, "/login")
+
+class CheckSession(Resource):
+
+    def get(self):
+        user = User.query.filter(User.id == session.get('user_id')).first()
+        if user:
+            return user.to_dict()
+        else:
+            return {'message': '401: Not Authorized'}, 401
+
+api.add_resource(CheckSession, '/check_session')
+
+class Logout(Resource):
+
+    def delete(self): # just add this line!
+        session['user_id'] = None
+        return {'message': '204: No Content'}, 204
+
+api.add_resource(Logout, '/logout')
 
 # class Users(Resource):
 #     def get(self):
