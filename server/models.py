@@ -28,6 +28,7 @@ class User(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f'<User {self.id}: {self.name}>'
+    
 class Product(db.Model, SerializerMixin):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
@@ -39,6 +40,7 @@ class Product(db.Model, SerializerMixin):
     image_url = db.Column(db.String)
 
     cart_items = db.relationship("Cart_Item", backref= "product")
+
     def __repr__(self):
         return f'<Product {self.id}: {self.name}>'
     
@@ -50,6 +52,7 @@ class Order(db.Model, SerializerMixin):
     purchase = db.Column(db.Boolean)
 
     cart_items = db.relationship("Cart_Item", backref= "order")
+
     def __repr__(self):
         return f'<Order {self.id}>'
     

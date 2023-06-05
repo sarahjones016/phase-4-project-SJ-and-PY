@@ -92,6 +92,8 @@ with app.app_context():
     Product.query.delete()
     # make_products()
     print('Trying it out')
+    user1 = User(email= 'sarah@test.com', password='password', admin=False)
+
     wine1 = Product(name= 'Peekaboo Grenache Pét-Nat 2021', price= 33.95, description='Jauma Peekaboo Grenache Pét-Nat 2020 is a natural wine made from 100percent Grenache grapes farmed sustainably in McLaren Vale, Southern Australia.', units=10, units_sold=4, image_url='https://cdn.shopify.com/s/files/1/0019/3363/9735/files/jauma-peek-a-boo-natural-wine-primal-wine.progressive.jpg?v=1683023715')
     wine2 = Product(name= 'Shake Up! 2021', price= 28.95, description='A fun pétillant natural wine that is flowing with tropical, citrus, and stone fruit flavors. Spicy on the palate with balanced acidity, and a long fresh finish!', units=17, units_sold=33, image_url='https://cdn.shopify.com/s/files/1/0011/8148/3072/products/Shake-Up_-Purity-natural-sparkling-wine-California-USA-front_1512x.jpg?v=1666059456')
     wine3 = Product(name= 'Alba Oak 2020', price= 23.95, description='Alba from Vinos Ambiz stems from the Spanish Albillo grape variety. It\'s an aromatic,  peachy orange wine. It has a lot more layers though: complexity, bit of creaminess, nuttiness and a slight oakiness. We tasted some caramel in there too.', units=10, units_sold=24, image_url='https://v2r8s3k5.rocketcdn.me/wp-content/uploads/2021/07/Vinos-Ambiz-Alba-2020.jpg.webp')
@@ -126,6 +128,7 @@ with app.app_context():
     wineproducts = [wine1, wine2, wine3, wine4, wine5, wine6, wine7, wine8, wine9, wine10, wine11, wine12, wine13, wine14, wine15, wine16, wine17, wine18, wine19, wine20, wine21, wine22, wine23, wine24, wine25, wine26, wine27, wine28, wine29, wine30]
     print('Its add_all')
     db.session.add_all(wineproducts)
+    db.session.add(user1)
     print('its the commit')
     db.session.commit()
     print("Seeding users...")
