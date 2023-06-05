@@ -14,18 +14,16 @@ function App() {
         <nav>
           <ul className="nav-bar">
             <li><Link to='/'>Home</Link></li>
-            <li><Link to='product-grid'>Wines</Link></li>
+            <li><Link to='products'>Wines</Link></li>
             <li><Link to='cart'>Cart</Link></li>
             <li><Link to='login'>Login</Link></li>
           </ul>
         </nav>
       </header>
 
-      <h1>App</h1>
-
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/product-grid' element={<ProductGrid />}></Route>
+        <Route path='/products' element={<ProductGrid />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/products/:id' element={<ProductDetails />} ></Route>
         <Route path='/cart' element ={<Cart />}></Route>

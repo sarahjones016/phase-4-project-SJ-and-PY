@@ -20,53 +20,66 @@ db.init_app(app)
 api = Api(app)
 # Views go here!
 
-class Users(Resource):
+class Products(Resource):
     def get(self):
-        pass
+        products_dict = [products.to_dict(only = ("name", "description", "image_url", "price", "units", "units_sold")) for products in Product.query.all()]
+
+        response = make_response(
+            products_dict,
+            200
+        )
+
+        return response
+
+api.add_resource(Products, "/products")
+
+# class Users(Resource):
+#     def get(self):
+#         pass
     
-api.add_resource(Users, '/users')
+# api.add_resource(Users, '/users')
 
 
-class UsersById(Resource):
-    def get(self):
-        pass
-    def post(self):
-        pass
-    def patch(self):
-        pass
-    def delete(self):
-        pass
-api.add_resource(UsersById, '/users/<int:id>')
+# class UsersById(Resource):
+#     def get(self):
+#         pass
+#     def post(self):
+#         pass
+#     def patch(self):
+#         pass
+#     def delete(self):
+#         pass
+# api.add_resource(UsersById, '/users/<int:id>')
 
 
-class User_Products(Resource):
-    def get(self):
-        pass
+# class User_Products(Resource):
+#     def get(self):
+#         pass
     
-api.add_resource(User_Products, '/userproducts')
+# api.add_resource(User_Products, '/userproducts')
 
-class Transactions(Resource):
-    def get(self):
-        pass
-    def post(self):
-        pass
-    def patch(self):
-        pass
-    def delete(self):
-        pass
-api.add_resource(Transactions, '/transactions')
+# class Transactions(Resource):
+#     def get(self):
+#         pass
+#     def post(self):
+#         pass
+#     def patch(self):
+#         pass
+#     def delete(self):
+#         pass
+# api.add_resource(Transactions, '/transactions')
 
 
-class TransactionsById(Resource):
-    def get(self):
-        pass
-    def post(self):
-        pass
-    def patch(self):
-        pass
-    def delete(self):
-        pass
-api.add_resource(TransactionsById, '/transactions/<int:id>')
+# class TransactionsById(Resource):
+#     def get(self):
+#         pass
+#     def post(self):
+#         pass
+#     def patch(self):
+#         pass
+#     def delete(self):
+#         pass
+# api.add_resource(TransactionsById, '/transactions/<int:id>')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
