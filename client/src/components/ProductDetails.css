@@ -1,0 +1,7 @@
+.product-detail{
+    display: inline-block;
+}
+.product-detail-img{
+    max-width: 300px;
+    /* max-height: 100%; */
+}
