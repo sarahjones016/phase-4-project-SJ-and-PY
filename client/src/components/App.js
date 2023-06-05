@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import Home from './Home.js'
 import ProductGrid from './ProductGrid'
@@ -10,6 +10,17 @@ import Cart from './Cart'
 function App() {
   return (
     <div>
+      <header className="header">
+        <nav>
+          <ul className="nav-bar">
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='product-grid'>Wines</Link></li>
+            <li><Link to='cart'>Cart</Link></li>
+            <li><Link to='login'>Login</Link></li>
+          </ul>
+        </nav>
+      </header>
+
       <h1>App</h1>
 
       <Routes>
