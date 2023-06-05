@@ -24,6 +24,8 @@ class User(db.Model, SerializerMixin):
     password = db.Column(db.String)
     admin = db.Column(db.Boolean)
 
+    users = db.relationship("User_Product", backref= "user")
+
     def __repr__(self):
         return f'<User {self.id}: {self.name}>'
 class Product(db.Model, SerializerMixin):
@@ -36,6 +38,7 @@ class Product(db.Model, SerializerMixin):
     units_sold = db.Column(db.Integer)
     image_url = db.Column(db.String)
 
+    products = db.relationship("User_Product", backref= "product")
     def __repr__(self):
         return f'<Product {self.id}: {self.name}>'
 class User_Product(db.Model, SerializerMixin):
@@ -43,7 +46,7 @@ class User_Product(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
-
+    
 
     def __repr__(self):
         return f'<User Product {self.id}>'

@@ -10,7 +10,7 @@ from faker import Faker
 from app import app
 from models import db, Product, User, User_Product, Transaction
 
-
+fake = Faker()
 products_dictionary = [
     {'name': 'Shake Up! 2021', 'price': '28.95', 'description':'A fun pétillant natural wine that is flowing with tropical, citrus, and stone fruit flavors. Spicy on the palate with balanced acidity, and a long fresh finish!', 'units':'17', 'units_sold':'33', 'image_url':'https://cdn.shopify.com/s/files/1/0011/8148/3072/products/Shake-Up_-Purity-natural-sparkling-wine-California-USA-front_1512x.jpg?v=1666059456'},
     {'name': 'Alba Oak 2020', 'price': '23.95', 'description':'Alba from Vinos Ambiz stems from the Spanish Albillo grape variety. It\'s an aromatic,  peachy orange wine. It has a lot more layers though: complexity, bit of creaminess, nuttiness and a slight oakiness. We tasted some caramel in there too.', 'units':'10', 'units_sold':'24', 'image_url':'https://v2r8s3k5.rocketcdn.me/wp-content/uploads/2021/07/Vinos-Ambiz-Alba-2020.jpg.webp'},
@@ -47,7 +47,7 @@ products_dictionary = [
             ]
 # {'name': '', 'price': '', 'description':'', 'units':'', 'units_sold':'', 'image_url':''}
 def make_products():
-
+    
     Product.query.delete()
 
     products = []
@@ -79,10 +79,12 @@ def make_users():
             admin = False
         )
         emails.append(user)
-    return emails
+    db.session.add_all(emails)
+    db.session.commit()
+
 
 if __name__ == '__main__':
-    fake = Faker()
+    
     with app.app_context():
         print("Starting seed...")
         print("Seeding products...")
