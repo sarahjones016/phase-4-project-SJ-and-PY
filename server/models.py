@@ -14,12 +14,9 @@ class User(db.Model, SerializerMixin):
     _password_hash = db.Column(db.String)
     admin = db.Column(db.Boolean, default=False)
 
-    cart_items = db.relationship("Cart_Item", backref= "user")
+    shopping_sessions = db.relationship("Shopping_Session", backref="user")
 
-    serialize_rules = ('-cart_items.user',)
-
-    def __repr__(self):
-        return f'<User {self.id}: {self.name}>'
+    serialize_rules = ('-shopping_sessions.user',)
 
     @hybrid_property
     def password_hash(self):
@@ -45,38 +42,31 @@ class Product(db.Model, SerializerMixin):
     units_sold = db.Column(db.Integer)
     image_url = db.Column(db.String)
 
-    cart_items = db.relationship("Cart_Item", backref= "product")
+    cart_items = db.relationship("Cart_Item", backref="product")
 
     serialize_rules = ('-cart_items.product',)
-
-    def __repr__(self):
-        return f'<Product {self.id}: {self.name}>'
-    
-class Order(db.Model, SerializerMixin):
-    __tablename__ = 'orders'
-    id = db.Column(db.Integer, primary_key=True)
-    total_price = db.Column(db.Float)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
-    purchased = db.Column(db.Boolean, default=False)
-
-    cart_items = db.relationship("Cart_Item", backref= "order")
-
-    serialize_rules = ('-cart_items.order',)
-
-    def __repr__(self):
-        return f'<Order {self.id}>'
     
 class Cart_Item(db.Model, SerializerMixin):
     __tablename__ = 'cart_items'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
-    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+    shopping_session_id = db.Column(db.Integer, db.ForeignKey('shopping_sessions.id'))
 
-    serialize_rules = ('-user.cart_items', '-product.cart_items', '-order.cart_items')
+    serialize_rules = ('product.cart_items', '-shopping_session.cart_items')
+    
+        
+class Shopping_Session(db.Model, SerializerMixin):
+    __tablename__ = 'shopping_sessions'
+    id = db.Column(db.Integer, primary_key=True)
+    # total_price = db.Column(db.Float)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    purchased = db.Column(db.Boolean, default=False)
 
-    def __repr__(self):
-        return f'<Cart Item {self.id}>'
+    cart_items = db.relationship("Cart_Item", backref="shopping_session")
+
+    serialize_rules = ('-user.shopping_sessions', '-cart_items.shopping_session',)
 
 
 # Models go here!

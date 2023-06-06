@@ -14,6 +14,7 @@ import SignUp from './Signup';
 function App() {
 
   const [user, setUser] = useState(null);
+  const [session, setSession] = useState(null)
 
   useEffect(() => {
     fetch("/check_session").then((response) => {
@@ -24,11 +25,23 @@ function App() {
   }, []);
 
   function handleLogin(user) {
-    setUser(user);
+    setUser(user)
+
+    fetch("/shopping_sessions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ 
+        user_id: user.id,
+      }),
+    })
+      .then((r) => r.json())
+      .then((session) => setSession(session));
   }
 
   function handleLogout() {
-    setUser(null);
+    setUser(null)
   }
 
   return (
@@ -37,7 +50,7 @@ function App() {
       <Header user={user} onLogout={handleLogout}/>
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/products' element={<ProductGrid />}></Route>
+        <Route path='/products' element={<ProductGrid user={user} session={session}/>}></Route>
         <Route path='/login' element={<Login onLogin={handleLogin} user={user}/>}></Route>
         <Route path='/create-account' element={<SignUp user={user}/>}></Route>
         <Route path='/products/:id' element={<ProductDetails />} ></Route>
