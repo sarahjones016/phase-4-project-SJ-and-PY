@@ -7,6 +7,9 @@ import Login from './Login'
 import ProductDetails from './ProductDetails'
 import Cart from './Cart'
 import Header from './Header'
+import SignUp from './Signup';
+
+
 
 function App() {
 
@@ -35,7 +38,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/products' element={<ProductGrid />}></Route>
-        <Route path='/account' element={<Login onLogin={handleLogin} user={user}/>}></Route>
+        <Route path='/login' element={<Login onLogin={handleLogin} user={user}/>}></Route>
+        <Route path='/create-account' element={<SignUp user={user}/>}></Route>
         <Route path='/products/:id' element={<ProductDetails />} ></Route>
         <Route path='/cart' element ={<Cart />}></Route>
       </Routes>

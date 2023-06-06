@@ -37,14 +37,44 @@ api.add_resource(Products, "/products")
 class Login(Resource):
 
     def post(self):
-        user = User.query.filter(
-            User.email == request.get_json()['email']
-        ).first()
 
-        session['user_id'] = user.id
-        return user.to_dict()
+        email = request.get_json()['email']
+        password = request.get_json()['password']
+
+        user = User.query.filter(User.email == email).first()
+
+        if user.authenticate(password):
+
+            session['user_id'] = user.id
+            return user.to_dict(), 200
+
+        return {'error': '401 Unauthorized'}, 401
     
 api.add_resource(Login, "/login")
+
+class Signup(Resource):
+
+    def post(self):
+        
+        email = request.get_json()['email']
+        password = request.get_json()['password']
+        admin = request.get_json()['admin']
+
+        if email and password:
+            
+            new_user = User(email=email)
+            new_user.password_hash = password
+            new_user.admin = admin
+            db.session.add(new_user)
+            db.session.commit()
+
+            session['user_id'] = new_user.id
+            
+            return new_user.to_dict(), 201
+
+        return {'error': '422 Unprocessable Entity'}, 422
+    
+api.add_resource(Signup, "/signup")
 
 class CheckSession(Resource):
 
