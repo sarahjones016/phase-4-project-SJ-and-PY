@@ -6,7 +6,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 
-from models import db, User, Product, Order, Cart_Item
+from models import db, User, Product, Cart_Item, Shopping_Session
 
 app = Flask(__name__)
 app.secret_key = b'Y\xf1Xz\x00\xad|eQ\x80t \xca\x1a\x10K'
@@ -23,7 +23,7 @@ api = Api(app)
 
 class Products(Resource):
     def get(self):
-        products_dict = [products.to_dict(only = ("name", "description", "image_url", "price", "units", "units_sold")) for products in Product.query.all()]
+        products_dict = [products.to_dict(only = ("id", "name", "description", "image_url", "price", "units", "units_sold")) for products in Product.query.all()]
 
         response = make_response(
             products_dict,
@@ -39,9 +39,8 @@ class Cart_Items(Resource):
     def post(self):
         
         new_cart_item = Cart_Item(
-            user_id = request.json['user_id'],
             product_id = request.json['product_id'],
-            order_id = request.json['order_id'],
+            shopping_session_id = request.json['shopping_session_id']
         )
 
         db.session.add(new_cart_item)
@@ -57,26 +56,26 @@ class Cart_Items(Resource):
         
 api.add_resource(Cart_Items, '/cart_items')
 
-class Orders(Resource):
+class Shopping_Sessions(Resource):
 
     def post(self):
         
-        new_order = Order(
-            total_price = request.json['total_price'],
+        new_shopping_session = Shopping_Session(
+            user_id = request.json['user_id'],
         )
 
-        db.session.add(new_order)
+        db.session.add(new_shopping_session)
         db.session.commit()
 
-        order_dict = new_order.to_dict()
+        shopping_session_dict = new_shopping_session.to_dict()
         
         response = make_response(
-            order_dict,
+            shopping_session_dict,
             201
         )
         return response
         
-api.add_resource(Orders, '/orders')
+api.add_resource(Shopping_Sessions, '/shopping_sessions')
 
 class Login(Resource):
 

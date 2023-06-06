@@ -8,7 +8,7 @@ from random import randint, choice as rc
 
 # Local imports
 from app import app
-from models import db, Product, User, Order, Cart_Item
+from models import db, Product, User, Cart_Item, Shopping_Session
 
 # fake = Faker()
 
@@ -35,7 +35,7 @@ with app.app_context():
     Product.query.delete()
     User.query.delete()
     Cart_Item.query.delete()
-    Order.query.delete()
+    Shopping_Session.query.delete()
     print('Trying it out')
 
     wine1 = Product(name= 'Peekaboo Grenache Pét-Nat 2021', price= 33.95, description='Jauma Peekaboo Grenache Pét-Nat 2020 is a natural wine made from 100% Grenache grapes farmed sustainably in McLaren Vale, Southern Australia.', units=10, units_sold=4, image_url='https://cdn.shopify.com/s/files/1/0019/3363/9735/files/jauma-peek-a-boo-natural-wine-primal-wine.progressive.jpg?v=1683023715')

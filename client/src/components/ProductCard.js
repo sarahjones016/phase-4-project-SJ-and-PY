@@ -1,13 +1,35 @@
-import React from "react";
+import React, {useState} from "react";
 import "./ProductCard.css";
 // import ProductDetails from "./ProductDetails";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ wine }) {
+function ProductCard({ wine, session }) {
+  // const [itemInCart, setItemInCart] = useState(false)
+
   const navigate = useNavigate();
   function handleCardClick() {
-    console.log(wine.id)
-    navigate(`/products/${wine.name}`, {state: wine})
+    console.log(wine)
+    navigate(`/products/${wine.id}`, {state: wine})
+  }
+
+  function handleAddToCartClick() {
+    console.log("added to cart")
+
+    // setItemInCart(true)
+
+    fetch("/cart_items", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        shopping_session_id: session.id,
+        product_id: wine.id
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+
   }
 
   return (
@@ -22,7 +44,7 @@ function ProductCard({ wine }) {
 
           <h3>{wine.name}</h3>
           <p>${wine.price}</p>
-          <button>Add To Cart</button>
+          <button onClick={handleAddToCartClick}>Add To Cart</button>
         </div>
       </div>
     </div>

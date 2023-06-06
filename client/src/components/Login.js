@@ -6,6 +6,8 @@ function Login({ onLogin, user }) {
   const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
+    
+
     e.preventDefault();
     fetch("/login", {
       method: "POST",
@@ -16,6 +18,8 @@ function Login({ onLogin, user }) {
     })
       .then((r) => r.json())
       .then((user) => onLogin(user));
+
+      // console.log(user)
   }
 
   return (
