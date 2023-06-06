@@ -11,10 +11,10 @@ function ProductGrid() {
       .then((r) => r.json())
       .then(setWines);
   }, []);
+  console.log(wines)
 
   return (
     <div>
-        <h1>ProductGrid</h1>
         <div className='product-grid'>
             {wines.map((wine) => {
                 return <ProductCard wine={wine} key={wine.name} />

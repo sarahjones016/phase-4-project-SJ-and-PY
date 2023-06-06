@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 function ProductCard({ wine }) {
   const navigate = useNavigate();
   function handleCardClick() {
-    navigate(`/products/${wine.id}`, {state: wine});
+    console.log(wine.id)
+    navigate(`/products/${wine.name}`, {state: wine})
   }
 
   return (
@@ -16,7 +17,6 @@ function ProductCard({ wine }) {
           <img
             src={wine.image_url}
             alt={wine.name}
-            id={wine.id}
             onClick={handleCardClick}
           />
 
