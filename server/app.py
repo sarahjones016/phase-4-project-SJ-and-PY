@@ -34,6 +34,32 @@ class Products(Resource):
 
 api.add_resource(Products, "/products")
 
+class Cart_Items(Resource):
+
+    def post(self):
+        
+        try:
+            new_cart_item = Cart_Item(
+                user_id = request.json['user_id'],
+                product_id = request.json['product_id'],
+                order_id = request.json['order_id'],
+            )
+
+            db.session.add(new_cart_item)
+            db.session.commit()
+
+            cart_item_dict = new_cart_item.to_dict()
+            
+            response = make_response(
+                cart_item_dict,
+                201
+            )
+            return response
+        except:
+            raise Exception
+        
+api.add_resource(Cart_Items, '/cart_items')
+
 class Login(Resource):
 
     def post(self):
