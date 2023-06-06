@@ -1,7 +1,8 @@
+# import ipdb
 # from flask_sqlalchemy import SQLAlchemy
 # from sqlalchemy import MetaData
 from sqlalchemy_serializer import SerializerMixin
-# from sqlalchemy.orm import validates
+from sqlalchemy.orm import validates
 # from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
 
@@ -18,7 +19,17 @@ class User(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f'<User {self.id}: {self.name}>'
-
+    
+    @validates('email')
+    def validates_email(self, key, email):
+        if not email:
+            raise ValueError('Email must be present')
+        elif 6 > len(email):
+            raise ValueError('Email must be at least 6 characters long')
+        elif '@' not in email:
+            raise ValueError('Must be a valid email address') 
+        return email
+    
     @hybrid_property
     def password_hash(self):
         raise Exception('Password hashes may not be viewed.')
@@ -70,5 +81,5 @@ class Cart_Item(db.Model, SerializerMixin):
     def __repr__(self):
         return f'<Cart Item {self.id}>'
 
-
+# ipdb.set_trace()
 # Models go here!
