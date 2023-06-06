@@ -6,7 +6,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 
-from models import db, User, Product, Order, User
+from models import db, User, Product, Cart_Item, Order
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -33,10 +33,41 @@ class Products(Resource):
 
 api.add_resource(Products, "/products")
 
+class Cart_Items(Resource):
+
+    def post(self):
+        
+        try:
+            new_cart_item = Cart_Item(
+                user_id = request.json['user_id'],
+                product_id = request.json['product_id'],
+                order_id = request.json['order_id'],
+            )
+
+            db.session.add(new_cart_item)
+            db.session.commit()
+
+            cart_item_dict = new_cart_item.to_dict()
+            
+            response = make_response(
+                cart_item_dict,
+                201
+            )
+            return response
+        except:
+            raise Exception
+        
+api.add_resource(Cart_Items, '/cart_items')
+#create order class instance connected to cart items
+#when the first item gets added to cart, an order instance is created
+#when the order instance is created, a cart order is created before any other items get added
+#we need to use order id to create, use order id for cart items
+#
+#  
 # class Users(Resource):
 #     def get(self):
 #         pass
-    
+
 # api.add_resource(Users, '/users')
 
 

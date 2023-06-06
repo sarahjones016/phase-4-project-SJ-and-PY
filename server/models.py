@@ -59,7 +59,7 @@ class Cart_Item(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
-
+    serialize_rules = ('-order.cart_items', '-product.cart_items')
     def __repr__(self):
         return f'<Cart Item {self.id}>'
 
