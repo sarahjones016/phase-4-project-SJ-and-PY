@@ -6,7 +6,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 
-from models import db, User, Product, Order
+from models import db, User, Product, Order, Cart_Item
 
 app = Flask(__name__)
 app.secret_key = b'Y\xf1Xz\x00\xad|eQ\x80t \xca\x1a\x10K'
@@ -38,27 +38,45 @@ class Cart_Items(Resource):
 
     def post(self):
         
-        try:
-            new_cart_item = Cart_Item(
-                user_id = request.json['user_id'],
-                product_id = request.json['product_id'],
-                order_id = request.json['order_id'],
-            )
+        new_cart_item = Cart_Item(
+            user_id = request.json['user_id'],
+            product_id = request.json['product_id'],
+            order_id = request.json['order_id'],
+        )
 
-            db.session.add(new_cart_item)
-            db.session.commit()
+        db.session.add(new_cart_item)
+        db.session.commit()
 
-            cart_item_dict = new_cart_item.to_dict()
-            
-            response = make_response(
-                cart_item_dict,
-                201
-            )
-            return response
-        except:
-            raise Exception
+        cart_item_dict = new_cart_item.to_dict()
+        
+        response = make_response(
+            cart_item_dict,
+            201
+        )
+        return response
         
 api.add_resource(Cart_Items, '/cart_items')
+
+class Orders(Resource):
+
+    def post(self):
+        
+        new_order = Order(
+            total_price = request.json['total_price'],
+        )
+
+        db.session.add(new_order)
+        db.session.commit()
+
+        order_dict = new_order.to_dict()
+        
+        response = make_response(
+            order_dict,
+            201
+        )
+        return response
+        
+api.add_resource(Orders, '/orders')
 
 class Login(Resource):
 
