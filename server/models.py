@@ -23,7 +23,7 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique = True, nullable = False)
     _password_hash = db.Column(db.String)
-    admin = db.Column(db.Boolean)
+    admin = db.Column(db.Boolean, default=False)
 
     cart_items = db.relationship("Cart_Item", backref= "user")
 

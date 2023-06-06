@@ -22,7 +22,7 @@ function Login({ onLogin, user }) {
     <div>
     {user ? (<p>{user.email} is currently logged in</p>) : (
       <form onSubmit={handleSubmit}>
-        <label>Login:</label>
+        <label>Email:</label>
         <input
           type="text"
           value={email}
