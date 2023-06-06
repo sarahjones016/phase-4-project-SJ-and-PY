@@ -29,7 +29,6 @@ function ProductCard({ wine, session }) {
     })
     .then(resp => resp.json())
     .then(data => console.log(data))
-
   }
 
   return (

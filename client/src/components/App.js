@@ -53,7 +53,7 @@ function App() {
         <Route path='/products' element={<ProductGrid user={user} session={session}/>}></Route>
         <Route path='/login' element={<Login onLogin={handleLogin} user={user}/>}></Route>
         <Route path='/create-account' element={<SignUp user={user}/>}></Route>
-        <Route path='/products/:id' element={<ProductDetails />} ></Route>
+        <Route path='/products/:id' element={<ProductDetails session={session}/>} ></Route>
         <Route path='/cart' element ={<Cart />}></Route>
       </Routes>
       </div> 
