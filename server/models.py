@@ -16,6 +16,8 @@ class User(db.Model, SerializerMixin):
 
     cart_items = db.relationship("Cart_Item", backref= "user")
 
+    serialize_rules = ('-cart_items.user',)
+
     def __repr__(self):
         return f'<User {self.id}: {self.name}>'
 
@@ -45,6 +47,8 @@ class Product(db.Model, SerializerMixin):
 
     cart_items = db.relationship("Cart_Item", backref= "product")
 
+    serialize_rules = ('-cart_items.product',)
+
     def __repr__(self):
         return f'<Product {self.id}: {self.name}>'
     
@@ -53,9 +57,11 @@ class Order(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     total_price = db.Column(db.Float)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
-    purchase = db.Column(db.Boolean)
+    purchased = db.Column(db.Boolean, default=False)
 
     cart_items = db.relationship("Cart_Item", backref= "order")
+
+    serialize_rules = ('-cart_items.order',)
 
     def __repr__(self):
         return f'<Order {self.id}>'
@@ -66,6 +72,8 @@ class Cart_Item(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+
+    serialize_rules = ('-user.cart_items', '-product.cart_items', '-order.cart_items')
 
     def __repr__(self):
         return f'<Cart Item {self.id}>'
