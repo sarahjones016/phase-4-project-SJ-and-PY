@@ -1,13 +1,32 @@
 import React, { useState } from "react";
 import "./ProductDetails.css";
 import { useLocation } from "react-router-dom";
-function ProductDetails() {
+
+function ProductDetails({session}) {
 
   // const [cart, setCart] = useState();
   const location = useLocation()
   const state = location.state
 
-  const handleAddToCart = () => {};
+  function handleAddToCartClick() {
+    console.log("added to cart")
+
+    // setItemInCart(true)
+
+    fetch("/cart_items", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        shopping_session_id: session.id,
+        product_id: state.id
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+  }
+
   return (
     <div>
       <div className="product-detail">
@@ -15,7 +34,7 @@ function ProductDetails() {
         <h3 className="product-detail-name">{state.name}</h3>
         <p className="product-detail-description">{state.description}</p>
         <p className="product-detail-price">${state.price}</p>
-        <button className="product-detail-button" onClick={handleAddToCart}>Add To Cart</button>
+        <button className="product-detail-button" onClick={handleAddToCartClick}>Add To Cart</button>
       </div>
     </div>
   );
