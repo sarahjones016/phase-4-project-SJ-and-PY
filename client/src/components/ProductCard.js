@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import "./ProductCard.css";
 // import ProductDetails from "./ProductDetails";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ wine, session }) {
+function ProductCard({ wine, session, handleCartItems }) {
   // const [itemInCart, setItemInCart] = useState(false)
 
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ function ProductCard({ wine, session }) {
       })
     })
     .then(resp => resp.json())
-    .then(data => console.log(data))
+    .then(data => handleCartItems(data))
   }
 
   return (
