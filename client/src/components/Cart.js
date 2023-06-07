@@ -1,9 +1,19 @@
 import React from 'react'
 import './Cart.css';
+// import ProductCard from './ProductCard';
 
-function Cart() {
+function Cart({cartItems}) {
+  const renderMyCart = cartItems.map((wine) => {
+    return <p>{wine.name}</p>
+  })
+
   return (
-    <div>Cart</div>
+    <div>
+        <h1>Cart</h1>
+        <div>
+          {renderMyCart}
+        </div>
+    </div>
   )
 }
 
