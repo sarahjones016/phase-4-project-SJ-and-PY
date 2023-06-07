@@ -1,0 +1,19 @@
+import React, { useState } from "react";
+function Sort({ setSortValue }) {
+  return (
+    <select
+      defaultValue={"DEFAULT"}
+      onChange={(e) => setSortValue(e.target.value)}
+    >
+      <option value="a.id > b.id">
+        Default
+      </option>
+      <option value="a.name > b.name">Alphabetical Ascending</option>
+      <option value="b.name > a.name">Alphabetical Descending</option>
+      <option value="a.price > b.price">Price Ascending</option>
+      <option value="b.price > a.price">Price Descending</option>
+      <option value="b.best_selling > a.best_selling">Bestselling</option>
+    </select>
+  );
+}
+export default Sort;
