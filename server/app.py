@@ -36,6 +36,16 @@ api.add_resource(Products, "/products")
 
 class Cart_Items(Resource):
 
+    def get(self):
+        cart_items_dict = [cart_items.to_dict() for cart_items in Cart_Item.query.all()]
+
+        response = make_response(
+            cart_items_dict,
+            200
+        )
+
+        return response
+
     def post(self):
         
         new_cart_item = Cart_Item(

@@ -24,7 +24,7 @@ function ProductDetails({session, handleCartItems}) {
       })
     })
     .then(resp => resp.json())
-    .then(data => handleCartItems(data))
+    .then(data => console.log(data))
   }
 
   return (
