@@ -1,10 +1,21 @@
-import React from 'react'
-import './Search.css';
+import React from "react";
+import "./Search.css";
 
-function Search() {
+function Search({onSearch, searchInput}) {
+
+
   return (
-    <div>Search</div>
-  )
+    <div className="searchbar">
+      <label htmlFor="search">Search Wines:</label>
+      <input
+        value={searchInput}
+        type="text"
+        id="search"
+        placeholder="Type a name to search..."
+        onChange={(e) => onSearch(e.target.value)}
+      />
+    </div>
+  );
 }
 
-export default Search
+export default Search;
