@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import "./ProductGrid.css";
 import ProductCard from "./ProductCard";
@@ -16,6 +17,7 @@ function ProductGrid({ user, session, wines, searchInput, onSearch,  }) {
   //     .then(setWines);
   // }, []);
 
+
   //sort function sort by alphabetical, by price, and by amount sold
 
   // const sortMethods = {
@@ -26,6 +28,7 @@ function ProductGrid({ user, session, wines, searchInput, onSearch,  }) {
   console.log(sortValue)
   return (
     <div>
+
       <Search searchInput={searchInput} onSearch={onSearch} />
       <Sort setSortValue={setSortValue}/>
       <div className="product-grid">
@@ -42,6 +45,7 @@ function ProductGrid({ user, session, wines, searchInput, onSearch,  }) {
             );
           })}
       </div>
+
     </div>
   );
 }

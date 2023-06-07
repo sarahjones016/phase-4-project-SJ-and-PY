@@ -36,6 +36,16 @@ api.add_resource(Products, "/products")
 
 class Cart_Items(Resource):
 
+    def get(self):
+        cart_items_dict = [cart_items.to_dict() for cart_items in Cart_Item.query.all()]
+
+        response = make_response(
+            cart_items_dict,
+            200
+        )
+
+        return response
+
     def post(self):
         
         new_cart_item = Cart_Item(
@@ -55,6 +65,41 @@ class Cart_Items(Resource):
         return response
         
 api.add_resource(Cart_Items, '/cart_items')
+
+class Cart_ItemsByID(Resource):
+    def get(self, id):
+        cartitem = Cart_Item.query.filter_by(id = id).first()
+
+        if cartitem:
+            cartitem_dict = cartitem.to_dict()
+
+            response = make_response(
+                cartitem_dict,
+                200
+            )
+
+            return response
+        
+        return {"error": "Cart item not found"}, 404
+
+    def delete(self, id):
+
+        cartitem = Cart_Item.query.filter_by(id = id).first()
+
+        if cartitem:
+            db.session.delete(cartitem)
+            db.session.commit()
+
+            response = make_response(
+                "",
+                204
+            )
+
+            return response
+        
+        return {"error": "Cart item not found"}, 404
+
+api.add_resource(Cart_ItemsByID, '/cart_items/<int:id>')
 
 class Shopping_Sessions(Resource):
 

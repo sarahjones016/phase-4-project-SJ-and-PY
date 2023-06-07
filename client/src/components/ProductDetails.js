@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ProductDetails.css";
 import { useLocation } from "react-router-dom";
 
-function ProductDetails({session}) {
+function ProductDetails({session, handleCartItems}) {
 
   // const [cart, setCart] = useState();
   const location = useLocation()

@@ -11,11 +11,21 @@ import SignUp from "./Signup";
 import Sort from "./Sort";
 function App() {
   const [user, setUser] = useState(null);
-  const [session, setSession] = useState(null);
+
+  const [session, setSession] = useState(null)
   const [wines, setWines] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [wineSort, setWineSort] = useState();
   const [sortType, setSortType] = useState("default");
+  // const [cartItems, setCartItems] = useState([])
+  // const [deleteItems, setDeleteItems] = useState([])
+
+  useEffect(() => {
+    fetch("/products") // localhost works here too!
+      .then((r) => r.json())
+      .then(setWines);
+  }, []);
+
   useEffect(() => {
     fetch("/check_session").then((response) => {
       if (response.ok) {
@@ -24,20 +34,9 @@ function App() {
     });
   }, []);
   function handleLogin(user) {
-    setUser(user);
-
-    fetch("/shopping_sessions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user_id: user.id,
-      }),
-    })
-      .then((r) => r.json())
-      .then((session) => setSession(session));
+    setUser(user)
   }
+  
   useEffect(() => {
     fetch("/products") // localhost works here too!
       .then((r) => r.json())
@@ -92,6 +91,20 @@ function App() {
   }
 
   console.log(defaultSort);
+  
+    // function handleCartItems(cartitem) {
+  //   console.log("handle cart items function has run")
+  //   console.log(cartitem)
+
+  //   // const filteredCartItems = wines.filter((item) => item.id === wine.product.id)
+    
+  //   // console.log(filteredCartItems)
+  //   // console.log(wine)
+  //   // console.log(wines)
+
+  //   setCartItems([...cartItems, cartitem]);
+  // }
+  
   return (
     <div className="App">
       <div>
@@ -117,15 +130,16 @@ function App() {
           ></Route>
           <Route
             path="/create-account"
-            element={<SignUp user={user} />}
+            element={<SignUp user={user} onLogin={handleLogin} setSession={setSession} />}
           ></Route>
           <Route
             path="/products/:id"
             element={<ProductDetails session={session} />}
           ></Route>
-          <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/cart" element={<Cart user={user} session={session} />}></Route>
         </Routes>
       </div>
+
     </div>
   );
 }

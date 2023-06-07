@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SignUp({ setUser, user }) {
+function SignUp({ onLogin, user, setSession}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [admin, setAdmin] = useState(false)
@@ -19,9 +19,32 @@ function SignUp({ setUser, user }) {
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
+        r.json().then((user) => 
+        {
+          onLogin(user)
+          fetch("/shopping_sessions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ 
+              user_id: user.id,
+            }),
+          })
+            .then((r) => r.json())
+            .then((session) => {
+              setSession(session)
+              localStorage.setItem("shopping_session", session.id)
+            });
+            }
+          
+        
+        );
+      
+          }
     });
+
+    
   }
 
   function handleChange(e) {

@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import "./ProductCard.css";
 // import ProductDetails from "./ProductDetails";
 import { useNavigate } from "react-router-dom";
 
 function ProductCard({ wine, session }) {
   // const [itemInCart, setItemInCart] = useState(false)
+  console.log()
 
   const navigate = useNavigate();
   function handleCardClick() {
@@ -23,7 +24,7 @@ function ProductCard({ wine, session }) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        shopping_session_id: session.id,
+        shopping_session_id: localStorage.getItem("shopping_session"),
         product_id: wine.id
       })
     })
