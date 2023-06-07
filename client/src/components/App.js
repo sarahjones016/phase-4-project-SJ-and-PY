@@ -17,6 +17,7 @@ function App() {
   const [session, setSession] = useState(null)
   const [wines, setWines] = useState([]);
   const [cartItems, setCartItems] = useState([])
+  // const [deleteItems, setDeleteItems] = useState([])
 
   useEffect(() => {
     fetch("/products") // localhost works here too!
@@ -52,17 +53,17 @@ function App() {
     setUser(null)
   }
 
-  function handleCartItems(id) {
+  function handleCartItems(cartitem) {
     console.log("handle cart items function has run")
+    console.log(cartitem)
 
-    // const filteredCartItems = wines.filter((wine) => wine.id === id)
-
+    // const filteredCartItems = wines.filter((item) => item.id === wine.product.id)
+    
     // console.log(filteredCartItems)
+    // console.log(wine)
+    // console.log(wines)
 
-    // setCartItems([...cartItems, filteredCartItems]);
-
-    // console.log(cartItems)
-
+    setCartItems([...cartItems, cartitem]);
   }
 
   return (
