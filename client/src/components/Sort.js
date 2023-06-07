@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import "./Sort.css";
+
 function Sort({ setSortValue }) {
   return (
-    <select
+    <div className='sortbar'>
+      <label>Sort Wines: </label>
+      <select 
       defaultValue={"DEFAULT"}
       onChange={(e) => setSortValue(e.target.value)}
     >
@@ -14,6 +18,8 @@ function Sort({ setSortValue }) {
       <option value="b.price > a.price">Price Descending</option>
       <option value="b.best_selling > a.best_selling">Bestselling</option>
     </select>
+    </div>
+    
   );
 }
 export default Sort;

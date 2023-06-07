@@ -1,0 +1,16 @@
+.signup-form {
+    border: 3px solid rgb(203, 192, 192);
+    margin: auto;
+    width: 35%;
+    padding: 50px;
+    margin-top: 55px;
+    background-color: #f3f3f2;
+  }
+
+.basic-form-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    /* width: 25%; */
+    text-align: center;
+}

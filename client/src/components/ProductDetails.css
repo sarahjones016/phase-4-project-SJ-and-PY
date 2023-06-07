@@ -1,7 +1,9 @@
 .product-detail{
     display: inline-block;
+    padding: 100px;
 }
 .product-detail-img{
     max-width: 300px;
+    padding-bottom: 75px;
     /* max-height: 100%; */
 }
