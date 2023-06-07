@@ -3,8 +3,9 @@ import "./ProductCard.css";
 // import ProductDetails from "./ProductDetails";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ wine, session, handleCartItems }) {
+function ProductCard({ wine, session }) {
   // const [itemInCart, setItemInCart] = useState(false)
+  console.log()
 
   const navigate = useNavigate();
   function handleCardClick() {
@@ -23,12 +24,12 @@ function ProductCard({ wine, session, handleCartItems }) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        shopping_session_id: session.id,
+        shopping_session_id: localStorage.getItem("shopping_session"),
         product_id: wine.id
       })
     })
     .then(resp => resp.json())
-    .then(data => handleCartItems(data))
+    .then(data => console.log(data))
   }
 
   return (
