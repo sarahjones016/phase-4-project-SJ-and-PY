@@ -37,12 +37,9 @@ function SignUp({ onLogin, user, setSession}) {
               setSession(session)
               localStorage.setItem("shopping_session", session.id)
             });
-            }
-          
-        
-        );
-      
           }
+        );
+      }
     });
 
     
