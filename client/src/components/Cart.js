@@ -39,11 +39,12 @@ function Cart({ user }) {
     console.log(totalprice.toFixed(2));
   });
   
-  function handleDelete(cartitem) {
-    fetch(`/cart_items/${cartitem}`, { method: "DELETE" })
-      .then((r) => r.json())
-      .then((data) => console.log(data));
-  }
+  // function handleDelete(cartitem) {
+  //   fetch(`/cart_items/${cartitem}`, { method: "DELETE" })
+  //     .then((r) => r.json())
+  //     .then((data) => console.log(data));
+  // }
+
   const renderMyCart = filteredCartItems.map((cartitem) => {
     return (
       <div className="cart-card" key={cartitem?.id}>
@@ -66,7 +67,7 @@ function Cart({ user }) {
   return (
     <div className='cart-grid-holder'>
         <h1>Cart</h1>
-        <p>Total: $</p>
+        <p>Total: $ {totalprice.toFixed(2)}</p>
         <div className='cart-grid'>
           {renderMyCart}
         </div>
