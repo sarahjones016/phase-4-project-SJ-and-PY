@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Cart.css";
+import { Link } from 'react-router-dom';
 // import ProductCard from './ProductCard';
 
 function Cart({ user }) {
@@ -78,6 +79,7 @@ function Cart({ user }) {
     <div className='cart-grid-holder'>
         <h1>Cart</h1>
         <p>Total: ${totalprice.toFixed(2)}</p>
+        <button><Link to='/checkout'>Checkout</Link></button>
         <div className='cart-grid'>
           {renderMyCart}
         </div>
