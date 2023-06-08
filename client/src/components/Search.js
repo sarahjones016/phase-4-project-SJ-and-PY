@@ -6,8 +6,9 @@ function Search({onSearch, searchInput}) {
 
   return (
     <div className="searchbar">
-      <label htmlFor="search">Search Wines:</label>
+      <label htmlFor="search">Search Wines: </label>
       <input
+        className='bar'
         value={searchInput}
         type="text"
         id="search"

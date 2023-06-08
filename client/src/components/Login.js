@@ -23,24 +23,27 @@ function Login({ onLogin, user }) {
   }
 
   return (
-    <div>
+    <div className='login-form'>
     {user ? (<p>{user.email} is currently logged in</p>) : (
       <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label>Password:</label>
-        <input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
+        <div className='basic-form-content'>
+          <label>Email:</label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label>Password:</label>
+          <input
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Login</button>
+        </div>
+
         </form>
       )}
     </div>

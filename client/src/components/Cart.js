@@ -64,10 +64,12 @@ function Cart({ user }) {
   console.log(cartItems);
 
   return (
-    <div>
-      <h1>Cart</h1>
-      <p>Total: ${totalprice.toFixed(2)}</p>
-      <div className="cart-grid">{renderMyCart}</div>
+    <div className='cart-grid-holder'>
+        <h1>Cart</h1>
+        <p>Total: $</p>
+        <div className='cart-grid'>
+          {renderMyCart}
+        </div>
     </div>
   );
 }
