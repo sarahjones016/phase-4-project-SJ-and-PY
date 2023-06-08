@@ -8,6 +8,7 @@ function Cart({ user }) {
   // const [shoppingSession, setShoppingSession] = useState(session.id)
 
   const [cartItems, setCartItems] = useState([]);
+  // const [deletedItems, setDeletedItems] = useState([])
 
   useEffect(() => {
     // if (!session){
@@ -18,6 +19,7 @@ function Cart({ user }) {
       .then((r) => r.json())
       .then((data) => setCartItems(data));
   }, []);
+  
   // console.log(cartItems)
   console.log(
     "This is the cart id: ",
@@ -38,12 +40,14 @@ function Cart({ user }) {
     
     console.log(totalprice.toFixed(2));
   });
-  
-  function handleDelete(cartitem) {
-    fetch(`/cart_items/${cartitem}`, { method: "DELETE" })
-      .then((r) => r.json())
-      .then((data) => console.log(data));
+
+  function onCartDelete(id) {
+    const filteredAndDeletedItens = filteredCartItems.filter((item) => {
+      return item.id !== id
+    })
+    setCartItems(filteredAndDeletedItens);
   }
+
   const renderMyCart = filteredCartItems.map((cartitem) => {
     return (
       <div className="cart-card" key={cartitem?.id}>
@@ -57,16 +61,23 @@ function Cart({ user }) {
         <p>${cartitem?.product?.price}</p>
         <p></p>
         <p>{cartitem?.product?.units} units in stock</p>
-        <button onClick={handleDelete(cartitem?.id)}>Remove From Cart</button>
+        <button onClick={() => 
+        fetch(`/cart_items/${cartitem.id}`, { 
+          method: "DELETE" 
+        })
+          .then((res) => console.log(res))
+          .then(() => onCartDelete(cartitem.id))
+        }>Remove From Cart</button>
       </div>
     );
   });
-  console.log(cartItems);
+ 
+  
 
   return (
     <div className='cart-grid-holder'>
         <h1>Cart</h1>
-        <p>Total: $</p>
+        <p>Total: ${totalprice.toFixed(2)}</p>
         <div className='cart-grid'>
           {renderMyCart}
         </div>
