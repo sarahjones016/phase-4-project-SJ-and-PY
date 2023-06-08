@@ -122,6 +122,30 @@ class Shopping_Sessions(Resource):
         
 api.add_resource(Shopping_Sessions, '/shopping_sessions')
 
+class Shopping_SessionsByID(Resource):
+
+    def patch(self, id):
+        shopping_session = Shopping_Session.query.filter_by(id = id).first()
+
+        for attr in request.json:
+            
+            setattr(shopping_session, attr, request.json[attr])
+
+        db.session.add(shopping_session)
+        db.session.commit()
+
+        shopping_session_dict = shopping_session.to_dict()
+
+        response = make_response(
+            shopping_session_dict,
+            202
+        )
+
+        return response
+
+api.add_resource(Shopping_SessionsByID, '/shopping_sessions/<int:id>')
+
+
 class Login(Resource):
 
     def post(self):
