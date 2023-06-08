@@ -4,4 +4,9 @@
     font-size: 1rem;
     color: #940079;
     background-color: #ffcbce;
+}.sortbar {
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 25px;
 }

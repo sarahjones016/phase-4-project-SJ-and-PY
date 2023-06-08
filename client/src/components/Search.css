@@ -1,5 +1,11 @@
 .searchbar{
     font-size: 25px;
-    font-family: sans-serif;
-    ;
+    /* font-family: sans-serif; */
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.bar {
+    width: 200px;
 }

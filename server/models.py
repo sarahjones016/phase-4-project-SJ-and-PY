@@ -1,7 +1,7 @@
 # from flask_sqlalchemy import SQLAlchemy
 # from sqlalchemy import MetaData
 from sqlalchemy_serializer import SerializerMixin
-# from sqlalchemy.orm import validates
+from sqlalchemy.orm import validates
 # from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
 
@@ -11,7 +11,7 @@ class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique = True, nullable = False)
-    _password_hash = db.Column(db.String)
+    _password_hash = db.Column(db.String, nullable = False)
     admin = db.Column(db.Boolean, default=False)
 
     shopping_sessions = db.relationship("Shopping_Session", backref="user")
@@ -31,6 +31,18 @@ class User(db.Model, SerializerMixin):
     def authenticate(self, password):
         return bcrypt.check_password_hash(
             self._password_hash, password.encode('utf-8'))
+
+    @validates("email")
+    def validate_email(self, key, email):
+        if '@' not in email:
+            raise ValueError("Failed email validation: Email must include a @")
+        return email
+    
+    # @validates("password")
+    # def validate_email(self, key, password):
+    #     if len(password) < 6:
+    #         raise ValueError("Failed password validation: Password must be 6 characters or longer")
+    #     return password
     
 class Product(db.Model, SerializerMixin):
     __tablename__ = 'products'

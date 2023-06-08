@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Signup.css";
 
 function SignUp({ onLogin, user, setSession}) {
   const [email, setEmail] = useState("");
@@ -36,12 +37,9 @@ function SignUp({ onLogin, user, setSession}) {
               setSession(session)
               localStorage.setItem("shopping_session", session.id)
             });
-            }
-          
-        
-        );
-      
           }
+        );
+      }
     });
 
     
@@ -52,32 +50,35 @@ function SignUp({ onLogin, user, setSession}) {
  }
  
   return (
-    <div>
-    {user ? (<p>{user.email} is currently logged in</p>) : <form onSubmit={handleSubmit}>
+    <div className='signup-form'>
+    {user ? (<p>{user.email} is currently logged in</p>) : 
+    <form onSubmit={handleSubmit}>
+      <div className='basic-form-content'>
         <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          id="email"
-        //   autoComplete="off"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        //   autoComplete="current-password"
-        />
-        <label htmlFor="admin">Admin</label>
-        <input 
-          name="admin" 
-          type="checkbox" 
-          value={admin}
-          onChange={handleChange}
-        />
-        <button type="submit">Sign Up</button>
+          <input
+            type="text"
+            id="email"
+          //   autoComplete="off"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          //   autoComplete="current-password"
+          />
+          <label htmlFor="admin">Admin</label>
+          <input 
+            name="admin" 
+            type="checkbox" 
+            value={admin}
+            onChange={handleChange}
+          />
+          <button type="submit">Sign Up</button>
+      </div>
       </form>}
       
     </div>
