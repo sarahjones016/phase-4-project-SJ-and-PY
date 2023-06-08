@@ -73,13 +73,26 @@ function Cart({ user }) {
     );
   });
  
+  function onCheckoutClick() {
+    console.log("checkout click")
+
+    fetch(`/shopping_sessions/${localStorage.getItem("shopping_session")}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "Application/json"
+      },
+      body: JSON.stringify({purchased: true})
+    })
+    // .then((res) => res.json())
+    .then((data) => console.log(data))
+  }
   
 
   return (
     <div className='cart-grid-holder'>
         <h1>Cart</h1>
         <p>Total: ${totalprice.toFixed(2)}</p>
-        <button><Link to='/checkout'>Checkout</Link></button>
+        <button onClick={onCheckoutClick}><Link to='/checkout'>Checkout</Link></button>
         <div className='cart-grid'>
           {renderMyCart}
         </div>
