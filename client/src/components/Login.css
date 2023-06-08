@@ -1,24 +1,17 @@
-.nav-bar a {
-  text-decoration: none;
-  color: black;
-}
-
-.nav-bar {
-  list-style: none;
-}
-
-.nav-bar li {
-  display: inline-block;
-  padding: 0px 20px;
-}
-
-.nav-bar li a:hover {
-  color: #fd95c9;
-}
 .login-form {
-    display: inline-block;
-    outline: dashed 1px red;
+  border: 3px solid rgb(203, 192, 192);
+  margin: auto;
+  width: 35%;
+  padding: 50px;
+  margin-top: 55px;
+  background-color: #f3f3f2;
 }
-.form{
-    
+
+.basic-form-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  /* width: 25%; */
+  text-align: center;
 }
+

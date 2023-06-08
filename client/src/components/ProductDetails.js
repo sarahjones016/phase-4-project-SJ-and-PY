@@ -30,11 +30,15 @@ function ProductDetails({session, handleCartItems}) {
   return (
     <div>
       <div className="product-detail">
-        <img src={state.image_url} alt={state.name} className="product-detail-img"/>
-        <h3 className="product-detail-name">{state.name}</h3>
-        <p className="product-detail-description">{state.description}</p>
-        <p className="product-detail-price">${state.price}</p>
-        <button className="product-detail-button" onClick={handleAddToCartClick}>Add To Cart</button>
+        <div className='image-div'>
+          <img src={state.image_url} alt={state.name} className="product-detail-img"/>
+        </div>
+        <div className='content-div'>
+          <h3 className="product-detail-name">{state.name}</h3>
+          <p className="product-detail-description">{state.description}</p>
+          <p className="product-detail-price">${state.price}</p>
+          <button className="product-detail-button" onClick={handleAddToCartClick}>Add To Cart</button>
+        </div>
       </div>
     </div>
   );

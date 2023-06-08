@@ -1,4 +1,4 @@
-.nav-bar a {
+/* .nav-bar a {
   overflow: hidden;
   float: left;
   display: block;
@@ -33,4 +33,54 @@
     position: fixed;
     top: 0;
     width: 100%;
+  } */
+
+.hamburgerMenuDiv {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+
+.hamburgerMenuDiv svg {
+    color: black;
+}
+
+.hamburgerMenuDiv svg:hover {
+    color: #ffa7ad;
+}
+
+.navBar {
+    background-color: #f3f3f2;
+    text-align: left;
+    padding: 2%;
+    width: 25vw;
+    height: 100vh;
+}
+
+.options li {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5%
+}
+
+.navButton {
+    text-align: left;
+    padding: 2%;
+    width: 25vw;
+}
+
+.navButtonTwo {
+    background-color: #f3f3f2;
+    text-align: left;
+    padding: 2%;
+    width: 25vw;
+}
+
+a {
+    color: black;
+    text-decoration: none;
   }
+
+a:hover {
+  color: #ffa7ad;
+}

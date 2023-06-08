@@ -44,7 +44,7 @@ function Cart({user}) {
   console.log(cartItems)
 
   return (
-    <div>
+    <div className='cart-grid-holder'>
         <h1>Cart</h1>
         <p>Total: $</p>
         <div className='cart-grid'>
