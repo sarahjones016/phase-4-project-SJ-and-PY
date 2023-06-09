@@ -5,3 +5,7 @@
     justify-content: space-evenly;
     text-align: left;
   }
+
+  @media only screen and (max-width: 768px){
+    
+  }

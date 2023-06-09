@@ -35,8 +35,8 @@ function Header({ user, onLogout }) {
             </div>}
             
             {showNavBar ? <div className='navBar'>
-                <ul className='options'>
-                  <li><Link to='/'>Home</Link></li>
+                <ul onClick={handleNavClick} className='options'>
+                  <li ><Link to='/'>Home</Link></li>
                   <li><Link to='products'>Wines</Link></li>
                   <li><Link to='cart'>Cart</Link></li>
                   <li><Link to='create-account'>Create Account</Link></li>

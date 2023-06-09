@@ -1,6 +1,24 @@
 .sortbar {
+  padding-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 1%;
+  font-size: 25px;
+
+  
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .sortbar {
+    font-size: ;
     padding-bottom: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
     font-size: 25px;
+  }
+  .select{
+    width: 205px;
+    height: 30px;
+    font-size: 17px;
+  }
 }
