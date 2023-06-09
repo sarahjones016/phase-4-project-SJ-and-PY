@@ -28,4 +28,40 @@
 
 .cart-grid-holder {
   padding: 75px;
+  
+}
+.cart-delete-button{
+  width: 150px
+}
+.cart-price{
+  padding-top: 5px;
+  padding-bottom: 10px
+}
+.checkout-button{
+  height: 25px;
+  width: 100px;
+}
+@media only screen and (max-width: 768px){
+  /* for mobile phones */
+  .cart-card{
+    width: 400px;
+
+  }
+  .cart-card-detail img {
+    width: 300px;
+    height: 350px;
+    /* border: solid hsl(0, 0%, 90%); */
+    object-fit:contain;
+  }
+  .cart-card-name {
+    padding-top: 2px;
+    padding-left: 2px;
+  }
+  .cart-card-price {
+    padding: 2px
+  }
+  .cart-card-units {
+    padding: 2px
+  }
+  
 }

@@ -58,11 +58,11 @@ function Cart({ user }) {
             src={cartitem?.product?.image_url}
           ></img>
         </div>
-        <h3>{cartitem?.product?.name}</h3>
-        <p>${cartitem?.product?.price}</p>
+        <h3 className="cart-card-name" >{cartitem?.product?.name}</h3>
+        <p className="cart-card-price" >${cartitem?.product?.price}</p>
         <p></p>
-        <p>{cartitem?.product?.units} units in stock</p>
-        <button onClick={() => 
+        <p className="cart-card-units" >{cartitem?.product?.units} units in stock</p>
+        <button className="cart-delete-button" onClick={() => 
         fetch(`/cart_items/${cartitem.id}`, { 
           method: "DELETE" 
         })
@@ -90,9 +90,9 @@ function Cart({ user }) {
 
   return (
     <div className='cart-grid-holder'>
-        <h1>Cart</h1>
-        <p>Total: ${totalprice.toFixed(2)}</p>
-        <button onClick={onCheckoutClick}><Link to='/checkout'>Checkout</Link></button>
+        <h1 className="cart-h1">Cart</h1>
+        <p className="cart-price">Total: ${totalprice.toFixed(2)}</p>
+        <button className="checkout-button" onClick={onCheckoutClick}><Link to='/checkout'>Checkout</Link></button>
         <div className='cart-grid'>
           {renderMyCart}
         </div>
