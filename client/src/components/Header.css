@@ -63,6 +63,10 @@
     padding: 5%
 }
 
+.options {
+  list-style: none;
+}
+
 .navButton {
     text-align: left;
     padding: 2%;

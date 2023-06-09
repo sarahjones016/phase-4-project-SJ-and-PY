@@ -47,6 +47,7 @@ function App() {
       .then((r) => r.json())
       .then(setWines);
   }, []);
+  
   function handleLogout() {
     setUser(null);
   }
