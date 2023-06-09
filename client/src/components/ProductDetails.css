@@ -1,49 +1,82 @@
-.product-detail{
-    display: inline-block;
-    padding: 100px;
+.product-detail {
+  display: inline-block;
+  padding: 100px;
 }
-.product-detail-img{
-    max-width: 300px;
-    padding-bottom: 75px;
-    /* max-height: 100%; */
+.product-detail-img {
+  max-width: 300px;
+  padding-bottom: 75px;
+  /* max-height: 100%; */
 }
-.product-detail-button{
-    width: 110px;
-    height: 30px;
-    border-radius: 25px;
+.product-detail-button {
+  width: 110px;
+  height: 30px;
+  border-radius: 25px;
 }
-.product-detail-description{
-    max-width: 600px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.product-detail-description {
+  max-width: 600px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-.product-detail-price{
-    font-weight: bold;
-    padding-bottom: 5px
+.product-detail-price {
+  font-weight: bold;
+  padding-bottom: 5px;
 }
 
-@media only screen and (max-width: 768px){
-    /* for mobile phones */
-    .product-detail{
-        display: inline-block;
-        padding: 50px;
-    }
-    .product-detail-img{
-        max-width: 200px;
-        padding-top: 25px;
-        padding-left: 40px;
-        padding-bottom: 25px;
-        /* max-height: 100%; */
-    }
-    .product-detail-name{
-        padding-bottom: 5px;
-    }
-    .product-detail-price{
-        padding-top: 10px;
-        padding-bottom: 10px
-    }
-    .product-detail-button{
-        padding: 5px
-        
-    }
+@media only screen and (max-width: 768px) {
+  /* for mobile phones */
+  .product-detail {
+    display: inline-block;
+    padding: 50px;
+  }
+  .product-detail-img {
+    max-width: 200px;
+    padding-top: 25px;
+    padding-left: 40px;
+    padding-bottom: 25px;
+    /* max-height: 100%; */
+  }
+  .product-detail-name {
+    padding-bottom: 5px;
+  }
+  .product-detail-price {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .product-detail-button {
+    padding: 5px;
+  }
+}
+@media all and (max-width: 991px) {
+  .product-detail-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+    padding-top: 25px;
+    padding-left: 0px;
+    padding-bottom: 100px;
+    /* max-height: 100%; */
+  }
+  .product-detail{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: red;
+    border-width: 2px;
+  }
+  .content-div{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px
+  }
+  .product-detail-button {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    width: 175px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
 }
