@@ -44,7 +44,7 @@ function Header({ user, onLogout }) {
                   <li>
                       {user ? (
                           <div>
-                              <button onClick={handleLogout}>Logout</button>
+                              <button className='logout-button' onClick={handleLogout}>Logout</button>
                           </div>
                       ) : null}
                   </li>

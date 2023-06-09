@@ -89,7 +89,12 @@ a {
 a:hover {
   color: #ffa7ad;
 }
-
+.logout-button{
+  height: 30px;
+  width: 100px;
+  border-radius: 25px;
+  font-size: 15px
+}
 /* tablet */
 @media all and (max-width: 991px) {
     
