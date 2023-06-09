@@ -17,7 +17,15 @@
     /* border: solid hsl(0, 0%, 90%); */
     object-fit:contain;
   }
-  
+  .wine-card-button{
+    width: 100px;
+    height: 25px;
+    border-radius: 25px;
+  }
+  .wine-card-price{
+    padding-bottom: 5px;
+    padding-top: 5px
+  }
   /* .product-details{
     width:0;
     height:0;

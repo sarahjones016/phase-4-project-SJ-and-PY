@@ -1,10 +1,11 @@
 .cart-card {
   display: relative;
   width: 300px;
-  height: 450px;
+  height: 475px;
   margin: 1rem;
   padding: 1rem;
   border: 3px solid rgb(203, 192, 192);
+  
 }
 
 .cart-card-detail {
@@ -31,20 +32,27 @@
   
 }
 .cart-delete-button{
-  width: 150px
+  width: 150px;
+  border-radius: 15px;
+  padding: 2%;
+  background-color: #b8939f
 }
 .cart-price{
   padding-top: 5px;
   padding-bottom: 10px
 }
 .checkout-button{
-  height: 25px;
+  height: 30px;
   width: 100px;
+  border-radius: 25px;
 }
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 767px){
   /* for mobile phones */
   .cart-card{
     width: 400px;
+    height: 470px;
+    padding-bottom: 25px;
+    
 
   }
   .cart-card-detail img {

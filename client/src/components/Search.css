@@ -7,7 +7,12 @@
 }
 
 .bar {
-  width: 200px;
+    width: 250px;
+    height: 25px;
+    font-size: 15px;
+    border-radius: 15px;
+    
+
 }
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
@@ -21,8 +26,9 @@
     padding-bottom: 2%;
   }
   .bar {
-    width: 200px;
+    width: 250px;
     height: 30px;
     font-size: 15px;
+    border-radius: 15px;
   }
 }
