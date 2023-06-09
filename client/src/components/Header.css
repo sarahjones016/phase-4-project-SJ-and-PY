@@ -84,3 +84,25 @@ a {
 a:hover {
   color: #ffa7ad;
 }
+
+/* tablet */
+@media all and (max-width: 991px) {
+    
+}
+
+/* phone */
+@media all and (max-width: 767px) {
+    .navBar {
+        width: 85vw;
+    }
+
+    .navButton {
+        text-align: left;
+        width: 85vw;
+    }
+    
+    .navButtonTwo {
+        text-align: left;
+        width: 85vw;
+    }
+}

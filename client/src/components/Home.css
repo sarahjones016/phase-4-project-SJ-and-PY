@@ -40,3 +40,15 @@ video {
 .homepageName {
     font-size: 9rem;
 }
+
+/* tablet */
+@media all and (max-width: 991px) {
+    
+}
+
+/* phone */
+@media all and (max-width: 767px) {
+    .homepageName {
+        font-size: 4rem;
+    }
+}
