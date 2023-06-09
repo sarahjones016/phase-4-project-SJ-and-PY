@@ -78,7 +78,9 @@ function SignUp({ onLogin, user, setSession}) {
             value={admin}
             onChange={handleChange}
           />
-          <button type="submit">Sign Up</button>
+      </div>
+      <div className='button'>
+        <button type="submit">Sign Up</button>
       </div>
       </form>}
       
