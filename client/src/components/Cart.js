@@ -41,19 +41,21 @@ function Cart({ user }) {
     
     console.log(totalprice.toFixed(2));
   });
-
+  
   function onCartDelete(id) {
     const filteredAndDeletedItens = filteredCartItems.filter((item) => {
       return item.id !== id
     })
     setCartItems(filteredAndDeletedItens);
   }
+  
 
   const renderMyCart = filteredCartItems.map((cartitem) => {
     return (
       <div className="cart-card" key={cartitem?.id}>
         <div className="cart-card-detail">
           <img
+          
             alt={cartitem?.product?.name}
             src={cartitem?.product?.image_url}
           ></img>
@@ -86,7 +88,6 @@ function Cart({ user }) {
     // .then((res) => res.json())
     .then((data) => console.log(data))
   }
-  
 
   return (
     <div className='cart-grid-holder'>

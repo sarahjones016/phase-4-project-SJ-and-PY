@@ -36,7 +36,7 @@
   } */
 
 .hamburgerMenuDiv {
-    position: absolute;
+    position: sticky;
     z-index: 1;
     top: 0;
 }
@@ -48,6 +48,7 @@
 .hamburgerMenuDiv svg:hover {
     color: #ffa7ad;
 }
+
 
 .navBar {
     background-color: #f3f3f2;

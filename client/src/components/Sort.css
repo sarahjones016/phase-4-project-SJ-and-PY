@@ -4,20 +4,31 @@
   padding-right: 5%;
   padding-top: 1%;
   font-size: 25px;
+  
 
   
+}
+.select{
+  width: 250px;
+  height: 30px;
+  padding-left: 5px;
+  font-size: 17px;
+  border-radius: 15px;
+  border-width: 2px;
 }
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .sortbar {
-    font-size: ;
+    font-size: 15px;
     padding-bottom: 5%;
     padding-left: 10%;
     padding-right: 10%;
     font-size: 25px;
+    border-radius: 15px;
+    
   }
   .select{
-    width: 205px;
+    width: 250px;
     height: 30px;
     font-size: 17px;
   }

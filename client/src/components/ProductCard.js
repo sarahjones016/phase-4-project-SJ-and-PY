@@ -42,9 +42,9 @@ function ProductCard({ wine, session }) {
             onClick={handleCardClick}
           />
 
-          <h3>{wine.name}</h3>
-          <p>${wine.price}</p>
-          <button onClick={handleAddToCartClick}>Add To Cart</button>
+          <h3 className="wine-card-name" >{wine.name}</h3>
+          <p className="wine-card-price">${wine.price}</p>
+          <button className="wine-card-button" onClick={handleAddToCartClick}>Add To Cart</button>
         </div>
       </div>
     </div>
