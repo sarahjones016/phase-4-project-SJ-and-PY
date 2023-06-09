@@ -3,8 +3,11 @@ import './Checkout.css';
 
 function Checkout() {
   return (
-    <h1 className='title'>Checkout</h1>
-  )
+    <div className='checkout'>
+      <h1>Order Confirmation</h1>
+      <p>Thanks for your order! Shipping details will be sent to you via email.</p>
+    </div>
+  ) 
 }
 
 export default Checkout

@@ -1,4 +1,17 @@
-.title{
-    padding-top: 2%;
+.checkout{
+    padding-top: 50px;
     text-align: center;
+}
+
+/* tablet */
+@media all and (max-width: 991px) {
+    
+}
+
+/* phone */
+@media all and (max-width: 767px) {
+    .checkout{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
 }

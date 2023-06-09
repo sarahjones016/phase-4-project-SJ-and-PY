@@ -56,7 +56,8 @@ function SignUp({ onLogin, user, setSession}) {
       <div className='basic-form-content'>
         <label htmlFor="email">Email</label>
           <input
-            type="text"
+            type="email"
+            required
             id="email"
           //   autoComplete="off"
             value={email}

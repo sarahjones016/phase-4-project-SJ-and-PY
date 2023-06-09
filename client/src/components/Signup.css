@@ -14,3 +14,26 @@
     /* width: 25%; */
     text-align: center;
 }
+
+/* tablet */
+@media all and (max-width: 991px) {
+    
+}
+
+/* phone */
+@media all and (max-width: 767px) {
+  .signup-form {
+    width: 75%;
+    padding: 20px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    /* margin-top: 50%; */
+  }
+
+  .basic-form-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    text-align: center;
+}
+}
