@@ -4,6 +4,7 @@ import "./Login.css";
 function Login({ onLogin, user }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("")
 
   function handleSubmit(e) {
     
@@ -15,8 +16,15 @@ function Login({ onLogin, user }) {
       },
       body: JSON.stringify({ email, password }),
     })
-      .then((r) => r.json())
-      .then((user) => onLogin(user));
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((user) => onLogin(user));
+        } else {
+          r.json().then((err) => setError("Password is incorrect"));
+        }
+      })
+      // r.json())
+      // .then((user) => onLogin(user));
 
       // console.log(user)
   }
@@ -40,7 +48,10 @@ function Login({ onLogin, user }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+        </div>
+        <div className='other-form-content'>
           <button type="submit">Login</button>
+          <p color="red">{error}</p>
         </div>
         </form>
       )}

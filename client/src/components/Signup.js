@@ -67,6 +67,8 @@ function SignUp({ onLogin, user, setSession}) {
           <input
             type="password"
             id="password"
+            minlength="6"
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           //   autoComplete="current-password"
@@ -78,7 +80,9 @@ function SignUp({ onLogin, user, setSession}) {
             value={admin}
             onChange={handleChange}
           />
-          <button type="submit">Sign Up</button>
+      </div>
+      <div className='button'>
+        <button type="submit">Sign Up</button>
       </div>
       </form>}
       
