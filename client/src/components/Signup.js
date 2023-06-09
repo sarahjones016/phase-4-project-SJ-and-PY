@@ -67,6 +67,8 @@ function SignUp({ onLogin, user, setSession}) {
           <input
             type="password"
             id="password"
+            minlength="6"
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           //   autoComplete="current-password"
