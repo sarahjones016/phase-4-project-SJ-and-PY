@@ -15,6 +15,24 @@
   text-align: center;
 }
 
+.other-form-content {
+  gap: 2rem;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.other-form-content p {
+  color: red;
+  padding-top: 2rem;
+}
+
+.other-form-content button {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 /* tablet */
 @media all and (max-width: 991px) {
     
@@ -35,5 +53,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     text-align: center;
+
 }
+
 }
