@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Home from "./Home.js";
 import ProductGrid from "./ProductGrid";
@@ -19,6 +19,8 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [wineSort, setWineSort] = useState();
   const [sortType, setSortType] = useState("default");
+  const navigate = useNavigate();
+
   // const [cartItems, setCartItems] = useState([])
   // const [deleteItems, setDeleteItems] = useState([])
 
@@ -37,6 +39,7 @@ function App() {
   }, []);
   function handleLogin(user) {
     setUser(user)
+    navigate("/")
   }
   
   useEffect(() => {
@@ -106,7 +109,7 @@ function App() {
 
   //   setCartItems([...cartItems, cartitem]);
   // }
-  
+
   return (
     <div className="App">
       <div>
@@ -126,14 +129,15 @@ function App() {
               />
             }
           ></Route>
+          {user ? null : 
           <Route
             path="/login"
             element={<Login onLogin={handleLogin} user={user} />}
-          ></Route>
-          <Route
+          ></Route>}
+          {user ? null : <Route
             path="/create-account"
             element={<SignUp user={user} onLogin={handleLogin} setSession={setSession} />}
-          ></Route>
+          ></Route>}
           <Route
             path="/products/:id"
             element={<ProductDetails session={session} />}

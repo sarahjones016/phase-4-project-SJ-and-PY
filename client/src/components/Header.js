@@ -39,8 +39,8 @@ function Header({ user, onLogout }) {
                   <li><Link to='/'>Home</Link></li>
                   <li><Link to='products'>Wines</Link></li>
                   <li><Link to='cart'>Cart</Link></li>
-                  <li><Link to='create-account'>Create Account</Link></li>
-                  <li><Link to='login'>Login</Link></li>
+                  {user ? null : <li><Link to='create-account'>Create Account</Link></li>}
+                  {user ? null : <li><Link to='login'>Login</Link></li>}
                   <li>
                       {user ? (
                           <div>
