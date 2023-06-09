@@ -9,6 +9,8 @@ import Cart from "./Cart";
 import Header from "./Header";
 import SignUp from "./Signup";
 import Sort from "./Sort";
+import Checkout from "./Checkout";
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -137,6 +139,7 @@ function App() {
             element={<ProductDetails session={session} />}
           ></Route>
           <Route path="/cart" element={<Cart user={user} session={session} />}></Route>
+          <Route path='/checkout' element={<Checkout />}></Route>
         </Routes>
       </div>
 
