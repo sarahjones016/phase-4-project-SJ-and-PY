@@ -7,7 +7,6 @@ function Login({ onLogin, user }) {
 
   function handleSubmit(e) {
     
-
     e.preventDefault();
     fetch("/login", {
       method: "POST",
@@ -43,7 +42,6 @@ function Login({ onLogin, user }) {
           />
           <button type="submit">Login</button>
         </div>
-
         </form>
       )}
     </div>
