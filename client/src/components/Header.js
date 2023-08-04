@@ -24,6 +24,7 @@ function Header({ user, onLogout }) {
     return (
 
       <div className='hamburgerMenuDiv'>
+        
             {showNavBar ? <div className='navButtonTwo'>
                 <IconContext.Provider className='hamburgerMenuTwo' value={{ size: "25px", color: "black"}}>
                     <RxHamburgerMenu onClick={handleNavClick}/>

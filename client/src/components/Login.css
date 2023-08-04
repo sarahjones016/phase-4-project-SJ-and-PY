@@ -26,16 +26,21 @@
   padding-top: 2rem;
 }
 
+.other-form-content button {
+  padding-top: 2rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: rgb(203, 192, 192); 
+}
+
 input {
   padding-left: 5px;
   height: 25px;
   border-radius: 10px;
-}
-
-.other-form-content button {
-  height: 30px;
-  border-radius: 10px;
-  background-color: rgb(203, 192, 192); 
 }
 
 /* tablet */
